@@ -13,6 +13,13 @@
       "description": "Lets an agent confirm a Flutter app's UI on the Android emulator by capturing screenshots over adb and reading them back with vision — so it checks its own work between turns instead of asking me to look.",
       "why": "Closing the loop on mobile UI changes without a human in the middle every time.",
       "stack": ["Claude Code", "adb", "Flutter"]
+    },
+    {
+      "name": "lighthouse-audit",
+      "label": "Web Perf",
+      "description": "Runs Lighthouse against a production build, takes the median of several mobile runs (single runs are noisy), and turns the result into an actionable punch list — category scores, Core Web Vitals, the exact failing audits, and LCP phase breakdown — with before/after support.",
+      "why": "I kept hand-running the same spin-up-preview → run-Lighthouse → diff-before/after loop on every perf pass — this makes it one repeatable, median-stable step.",
+      "stack": ["Claude Code", "Lighthouse", "Chrome"]
     }
   ]
 }
