@@ -8,11 +8,30 @@ This repo is the canonical home for the generic, personal ones. Project- or clie
 
 ## Skills
 
-### [page-audit](./page-audit)
-Audits a UI surface and returns a prioritized punch list — **not** a redesign. Walks seven axes (information hierarchy, content accuracy, visual consistency, density at edge counts, copy, affordance clarity, cross-page coherence), **verifies every finding against the actual code before reporting it** (file:line citations, not vibes), and groups output by severity (P1 / P2 / P3). Built because I kept doing the same manual UI review by eye and wanted it systematic and evidence-backed.
+<!-- SKILLS:START -->
 
-### [emulator-verify](./emulator-verify)
-Lets an agent visually confirm a Flutter app's UI on the Android emulator by capturing screenshots over `adb` and reading them back with vision — so it can check its own work between turns instead of asking me to look at my screen. Encodes the non-obvious bits: why `exec-out` matters, when to prefer semantic widget tooling over fragile pixel taps, and the common failure diagnostics.
+### [page-audit](./page-audit) · UI Review
+
+Audits a UI surface across seven axes and returns a prioritized P1/P2/P3 punch list — verifying every finding against the actual code (file:line citations) before reporting it. A review, not a redesign.
+
+**Why:** I kept doing the same manual UI pass by eye — this makes it systematic and evidence-backed. · **Stack:** Claude Code, Playwright
+
+### [emulator-verify](./emulator-verify) · Mobile QA
+
+Lets an agent confirm a Flutter app's UI on the Android emulator by capturing screenshots over adb and reading them back with vision — so it checks its own work between turns instead of asking me to look.
+
+**Why:** Closing the loop on mobile UI changes without a human in the middle every time. · **Stack:** Claude Code, adb, Flutter
+
+### [lighthouse-audit](./lighthouse-audit) · Web Perf
+
+Runs Lighthouse against a production build, takes the median of several mobile runs (single runs are noisy), and turns the result into an actionable punch list — category scores, Core Web Vitals, the exact failing audits, and LCP phase breakdown — with before/after support.
+
+**Why:** I kept hand-running the same spin-up-preview → run-Lighthouse → diff-before/after loop on every perf pass — this makes it one repeatable, median-stable step. · **Stack:** Claude Code, Lighthouse, Chrome
+
+<!-- SKILLS:END -->
+
+> This list is generated from [`skills.json`](./skills.json) — the source of
+> truth. Don't edit it by hand; add a skill there and the README syncs itself.
 
 ## Using a skill
 
