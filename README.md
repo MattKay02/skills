@@ -10,6 +10,12 @@ This repo is the canonical home for the generic, personal ones. Project- or clie
 
 <!-- SKILLS:START -->
 
+### [ui-walk](./ui-walk) · UI Evidence
+
+Drives the running app with Playwright through every surface and state of a feature — empty, mid-flow, success, collapsed/expanded — saving an ordered, numbered screenshot folder that reads like a story. Idempotent: it cleans up everything it creates, so re-running after fixes regenerates the same sequence for comparison.
+
+**Why:** I kept hand-writing the same walk script before every UI review — ordered captures of every state, then feed the folder to page-audit. Third time was the skill. · **Stack:** Claude Code, Playwright
+
 ### [page-audit](./page-audit) · UI Review
 
 Audits a UI surface across seven axes and returns a prioritized P1/P2/P3 punch list — verifying every finding against the actual code (file:line citations) before reporting it. A review, not a redesign.
