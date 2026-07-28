@@ -17,7 +17,7 @@
     {
       "name": "emulator-verify",
       "label": "Mobile QA",
-      "description": "Lets an agent confirm a Flutter app's UI on the Android emulator by capturing screenshots over adb and reading them back with vision — so it checks its own work between turns instead of asking me to look.",
+      "description": "Lets an agent confirm a Flutter app's UI on the Android emulator by driving it with adb input, capturing screenshots over adb, and reading them back with vision — so it checks its own work between turns instead of asking me to look. Shell-aware: the byte-safe screencap command differs between PowerShell and bash, and getting it wrong yields a corrupt PNG that looks fine on disk.",
       "why": "Closing the loop on mobile UI changes without a human in the middle every time.",
       "stack": ["Claude Code", "adb", "Flutter"]
     },
