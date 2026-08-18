@@ -49,14 +49,21 @@ in a command you print.
 ## Process
 
 1. **Confirm the branch is pushed.** A build runs a ref the *remote* has; a
-   local-only branch fails with something unhelpful. `git rev-parse --abbrev-ref
-   HEAD` and check it against the remote before wasting a build on it.
+   local-only branch fails with something unhelpful. `GET /apps/<id>` returns
+   the branches Codemagic can see, which is the authoritative check — compare
+   it against `git rev-parse --abbrev-ref HEAD` before wasting a build.
 2. **Get the `workflowId` from the repo, not from memory.** It is the key under
    `workflows:` in the project's `codemagic.yaml` (e.g. `ios-release`), not the
    human-facing `name:` beneath it. Read the file.
 3. **Resolve `appId` once.** `GET /apps` returns every app with its `_id`.
    Match on the repo/app name and keep it for the session. Do not write it to
    the repo — it is account-scoped, like the token.
+
+   **Ignore the `workflows` field while doing it.** It lists *UI-configured*
+   workflows keyed by opaque hashes, so an app built entirely from
+   `codemagic.yaml` reports one meaningless id and none of the names you are
+   looking for. The `workflowId` you want is the yaml key (step 2); the two
+   look like the same concept and are not.
 4. **Confirm, then start.** See the gate above. `POST /builds`.
 5. **Poll, patiently.** `GET /builds/<id>` and read `status`. Builds take
    minutes, not seconds: poll on the order of 30–60s. Tell the user what you
@@ -67,7 +74,9 @@ in a command you print.
 
 ## API reference
 
-Base `https://api.codemagic.io`, header `Authorization: Bearer $CODEMAGIC_API_TOKEN`.
+Base `https://api.codemagic.io`. Either auth header works —
+`Authorization: Bearer <token>` or the older `x-auth-token: <token>`. Prefer
+Bearer; recognise the other, because a lot of existing scripts use it.
 
 | Do | Call |
 |---|---|
