@@ -10,6 +10,12 @@ This repo is the canonical home for the generic, personal ones. Project- or clie
 
 <!-- SKILLS:START -->
 
+### [codemagic-build](./codemagic-build) · Mobile CI
+
+Starts a Codemagic build from the terminal, polls it to completion, and reports the result with artifact download links — so "ship a build and tell me when it lands" doesn't mean sitting on a browser tab for twenty minutes. Reads the API token from the environment only, never the repo, and treats starting a build as a gated action because minutes are metered and a green build can upload straight to real testers.
+
+**Why:** Kicking off a TestFlight build meant leaving the terminal, clicking through a UI, and coming back later to find out. The safety rails are the interesting half: a CI token is personal tooling, not project config, and it does not belong in the repo. · **Stack:** Claude Code, Codemagic, REST API
+
 ### [ui-walk](./ui-walk) · UI Evidence
 
 Drives the running app with Playwright through every surface and state of a feature — empty, mid-flow, success, collapsed/expanded — saving an ordered, numbered screenshot folder that reads like a story. Idempotent: it cleans up everything it creates, so re-running after fixes regenerates the same sequence for comparison.
