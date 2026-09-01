@@ -40,6 +40,12 @@ Runs Lighthouse against a production build, takes the median of several mobile r
 
 **Why:** I kept hand-running the same spin-up-preview → run-Lighthouse → diff-before/after loop on every perf pass — this makes it one repeatable, median-stable step. · **Stack:** Claude Code, Lighthouse, Chrome
 
+### [screen-board](./screen-board) · Product Map
+
+Builds a pan-and-zoom board of every screen in an app — full-page captures laid out in reading order, each paired with what that screen is FOR and what good looks like — published as one design canvas that updates in place. Records the commit each screen was captured at, so it can tell you which descriptions have gone out of date rather than just re-taking the pictures.
+
+**Why:** I kept rebuilding the same board and it kept going quietly wrong — two frames were screenshots of a 404 for four days, and a panel described a feature three tools out of date. The screenshots were never the problem; the writing beside them was. · **Stack:** Claude Code, Playwright, Claude Design
+
 <!-- SKILLS:END -->
 
 > This list is generated from [`skills.json`](./skills.json) — the source of

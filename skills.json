@@ -52,6 +52,17 @@
         "Lighthouse",
         "Chrome"
       ]
+    },
+    {
+      "name": "screen-board",
+      "label": "Product Map",
+      "description": "Builds a pan-and-zoom board of every screen in an app — full-page captures laid out in reading order, each paired with what that screen is FOR and what good looks like — published as one design canvas that updates in place. Records the commit each screen was captured at, so it can tell you which descriptions have gone out of date rather than just re-taking the pictures.",
+      "why": "I kept rebuilding the same board and it kept going quietly wrong — two frames were screenshots of a 404 for four days, and a panel described a feature three tools out of date. The screenshots were never the problem; the writing beside them was.",
+      "stack": [
+        "Claude Code",
+        "Playwright",
+        "Claude Design"
+      ]
     }
   ]
 }
