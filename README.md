@@ -46,6 +46,12 @@ Builds a pan-and-zoom board of every screen in an app — full-page captures lai
 
 **Why:** I kept rebuilding the same board and it kept going quietly wrong — two frames were screenshots of a 404 for four days, and a panel described a feature three tools out of date. The screenshots were never the problem; the writing beside them was. · **Stack:** Claude Code, Playwright, Claude Design
 
+### [silent-failure-sweep](./silent-failure-sweep) · Reliability
+
+Hunts a codebase for failures that happen without anyone being told — capped AI calls whose stop reason is never checked, errors turned into empty results, background jobs with no failure handler that leave records stuck mid-state, counts that report the same problem every run without escalating, and limits applied quietly. Produces a ranked punch list with file:line and the loud alternative, and proves the worst with a cheap live probe rather than asserting it.
+
+**Why:** In one day on a production app, the same shape turned up five times: a document pipeline that silently kept only the first 17 pages of a 40-page file, background jobs that hung forever and made the UI blame the wrong thing, a usage meter counting every document as one page, and a weekly check reporting the same three failures for two months without naming them. Each was honest in its logs and silent to the person who needed to know. · **Stack:** Claude Code, Static analysis, SQL
+
 <!-- SKILLS:END -->
 
 > This list is generated from [`skills.json`](./skills.json) — the source of
