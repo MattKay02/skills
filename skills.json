@@ -74,6 +74,17 @@
         "Static analysis",
         "SQL"
       ]
+    },
+    {
+      "name": "motion-sketchbook",
+      "label": "Motion Design",
+      "description": "Sketches a design as rendered films and stills before anything is built: several distinct options for a launch animation, store pictures or a run of social posts, drawn in Remotion from the product's real screens, type and marks, and shown side by side on one page to pick by watching. Checks every render on a contact sheet with the platform's covered areas ruled in, and leaves the Remotion API itself to Remotion's official skills.",
+      "why": "Third time building the same thing: a launch animation, then store screenshots, then a set of social posts, each with its own fonts, phone frame, render script and contact sheet. My first try at the animation drew its letters by hand and looked home-made; four options rendered as video got picked on the first look. The part worth keeping was never the React. It was the checks: a render that fails quietly, or succeeds and shows you last hour's picture.",
+      "stack": [
+        "Claude Code",
+        "Remotion",
+        "ffmpeg"
+      ]
     }
   ]
 }
