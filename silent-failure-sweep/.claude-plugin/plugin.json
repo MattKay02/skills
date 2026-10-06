@@ -1,0 +1,17 @@
+{
+  "name": "silent-failure-sweep",
+  "description": "Hunts a codebase for failures that happen without anyone being told: capped AI calls whose stop reason is never checked, errors turned into empty results, background jobs with no failure handler that leave records stuck mid-state, counts that report the same problem every run without escalating, and limits applied quietly.",
+  "author": {
+    "name": "Matthew Kay",
+    "url": "https://github.com/MattKay02"
+  },
+  "homepage": "https://github.com/MattKay02/skills/tree/main/silent-failure-sweep",
+  "repository": "https://github.com/MattKay02/skills",
+  "license": "MIT",
+  "keywords": [
+    "reliability",
+    "claude-code",
+    "static-analysis",
+    "sql"
+  ]
+}

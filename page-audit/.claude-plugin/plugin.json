@@ -1,0 +1,16 @@
+{
+  "name": "page-audit",
+  "description": "Audits a UI surface across seven axes and returns a prioritized P1/P2/P3 punch list, verifying every finding against the actual code (file:line citations) before reporting it.",
+  "author": {
+    "name": "Matthew Kay",
+    "url": "https://github.com/MattKay02"
+  },
+  "homepage": "https://github.com/MattKay02/skills/tree/main/page-audit",
+  "repository": "https://github.com/MattKay02/skills",
+  "license": "MIT",
+  "keywords": [
+    "ui-review",
+    "claude-code",
+    "playwright"
+  ]
+}

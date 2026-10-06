@@ -1,5 +1,5 @@
-// Regenerates the skill list in README.md from skills.json — the single source
-// of truth. Run by .github/workflows/sync-readme.yml on every push, so adding a
+// Regenerates the skill list in README.md from skills.json, the single source
+// of truth. Run by .github/workflows/sync.yml on every push, so adding a
 // skill stays a one-file job (SKILL.md + skills.json); the README updates itself.
 //
 //   node scripts/gen-readme.mjs
@@ -24,6 +24,7 @@ const block = skills
     if (s.why) meta.push(`**Why:** ${s.why}`)
     if (Array.isArray(s.stack) && s.stack.length) meta.push(`**Stack:** ${s.stack.join(', ')}`)
     if (meta.length) lines.push(meta.join(' · '))
+    lines.push('**Install:** `npx skills add MattKay02/skills --skill ' + s.name + '` · Claude Code: `/plugin install ' + s.name + '@mattkay02`')
     return lines.join('\n\n')
   })
   .join('\n\n')

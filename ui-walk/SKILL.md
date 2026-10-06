@@ -1,6 +1,6 @@
 ---
 name: ui-walk
-description: Drive the running app with Playwright through every surface and state of a feature, saving an ordered, numbered screenshot folder the user can flip through like a story. Use when the user asks to "walk the UI", "screenshot every state", "show me what X looks like", or wants visual evidence before/after an audit or fix pass. Captures only — it does not judge (pair with page-audit) and does not fix.
+description: Drive the running app with Playwright through every surface and state of a feature, saving an ordered, numbered screenshot folder the user can flip through like a story. Use when the user asks to "walk the UI", "screenshot every state", "show me what X looks like", or wants visual evidence before/after an audit or fix pass. Captures only; it does not judge (pair with page-audit) and does not fix.
 ---
 
 # UI walk

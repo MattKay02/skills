@@ -1,0 +1,17 @@
+{
+  "name": "codemagic-build",
+  "description": "Starts a Codemagic build from the terminal, polls it to completion, and reports the result with artifact download links, so \"ship a build and tell me when it lands\" doesn't mean sitting on a browser tab for twenty minutes.",
+  "author": {
+    "name": "Matthew Kay",
+    "url": "https://github.com/MattKay02"
+  },
+  "homepage": "https://github.com/MattKay02/skills/tree/main/codemagic-build",
+  "repository": "https://github.com/MattKay02/skills",
+  "license": "MIT",
+  "keywords": [
+    "mobile-ci",
+    "claude-code",
+    "codemagic",
+    "rest-api"
+  ]
+}

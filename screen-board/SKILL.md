@@ -1,6 +1,6 @@
 ---
 name: screen-board
-description: Build and maintain a pan-and-zoom board of every screen in an app — full-page captures laid out in reading order, each paired with what the screen is FOR and what good looks like — published as one design canvas that updates in place instead of becoming a new link. Use when the user asks for a "screen board", "screen map", "board of all the screens", a Figma-style overview of the product, or wants an existing board refreshed. Also carries the staleness check that says which screens' DESCRIPTIONS may have gone out of date. Documents an existing app — it does not design new screens, and it does not judge the ones it captures (pair with page-audit for that).
+description: Build and maintain a pan-and-zoom board of every screen in an app, with full-page captures laid out in reading order, each paired with what the screen is FOR and what good looks like, published as one design canvas that updates in place instead of becoming a new link. Use when the user asks for a "screen board", "screen map", "board of all the screens", a Figma-style overview of the product, or wants an existing board refreshed. Also carries the staleness check that says which screens' DESCRIPTIONS may have gone out of date. Documents an existing app; it does not design new screens, and it does not judge the ones it captures (pair with page-audit for that).
 ---
 
 # Screen board

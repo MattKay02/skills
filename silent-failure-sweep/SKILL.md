@@ -1,6 +1,6 @@
 ---
 name: silent-failure-sweep
-description: Hunt a codebase for failures that happen without anyone being told — AI calls capped at a token limit whose stop reason is never checked, errors caught and turned into empty results, background jobs with no failure handler that leave records stuck mid-state, counts that report the same problem every run without escalating, and limits applied quietly. Produces a ranked punch list with file:line, what silently goes wrong, who never finds out, and the loud alternative, and proves the worst with a cheap live probe. Use when asked to audit reliability, find silent failures, check "is anything failing quietly", review a pipeline or background-job system, or after one silent failure is found (there are usually more of the same shape).
+description: Hunt a codebase for failures that happen without anyone being told, such as AI calls capped at a token limit whose stop reason is never checked, errors caught and turned into empty results, background jobs with no failure handler that leave records stuck mid-state, counts that report the same problem every run without escalating, and limits applied quietly. Produces a ranked punch list with file:line, what silently goes wrong, who never finds out, and the loud alternative, and proves the worst with a cheap live probe. Use when asked to audit reliability, find silent failures, check "is anything failing quietly", review a pipeline or background-job system, or after one silent failure is found (there are usually more of the same shape).
 ---
 
 # Silent failure sweep
