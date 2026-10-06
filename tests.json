@@ -106,6 +106,27 @@
         }
       ]
     },
+    "phone-fit": {
+      "lastRun": "2026-10-06",
+      "cases": [
+        {
+          "name": "fires-on-a-plain-request",
+          "kind": "trigger",
+          "runs": 3,
+          "with": 1,
+          "without": 0,
+          "date": "2026-10-06"
+        },
+        {
+          "name": "stays-out-of-a-near-miss",
+          "kind": "trigger",
+          "runs": 3,
+          "with": 1,
+          "without": 1,
+          "date": "2026-10-06"
+        }
+      ]
+    },
     "screen-board": {
       "lastRun": "2026-10-06",
       "cases": [

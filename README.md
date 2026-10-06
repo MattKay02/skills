@@ -72,6 +72,14 @@ Runs Lighthouse against a production build, takes the median of several mobile r
 
 **Install:** `npx skills add MattKay02/skills --skill lighthouse-audit` · Claude Code: `/plugin install lighthouse-audit@mattkay02`
 
+### [phone-fit](./phone-fit) · Mobile Fit
+
+Steps through every state of a page or flow at the sizes phones actually give it (Safari's address bar takes part of the screen) and measures what desktop checks miss: a sheet or card that has to scroll, a Next or Submit button off screen, labels landing on other content, and a page that keeps writing to the DOM every frame, the usual reason iPhone Safari lags or reloads. Reports per size and per step, saves a screenshot strip of the worst cases, and re-measures after fixes.
+
+**Why:** On 6 Oct 2026 my portfolio crash-looped in iPhone Safari and its guide card hid the Next button on an iPhone 13 Pro, while every desktop check passed. I ran the same phone measurements four times that day before turning them into a skill. · **Stack:** Claude Code, Playwright, WebKit
+
+**Install:** `npx skills add MattKay02/skills --skill phone-fit` · Claude Code: `/plugin install phone-fit@mattkay02`
+
 ### [screen-board](./screen-board) · Product Map
 
 Builds a pan-and-zoom board of every screen in an app: full-page captures laid out in reading order, each paired with what that screen is FOR and what good looks like, published as one design canvas that updates in place. Records the commit each screen was captured at, so it can tell you which descriptions have gone out of date rather than just re-taking the pictures.
@@ -113,7 +121,7 @@ gives a fresh, empty Claude session a realistic request, then checks the result 
 behaviour cases also run without the skill, so the difference is what the skill adds.
 
 - **Triggering** (every skill): one plain request that should load the skill, and one near miss
-  that shouldn't. All 16 cases passed 3 runs out of 3 (6 October 2026).
+  that shouldn't. All 18 cases passed 3 runs out of 3 (6 October 2026).
 - **Behaviour** (`silent-failure-sweep`): a small order service with five planted silent failures,
   three look-alikes that are handled properly, and ordinary code around them. With the skill,
   every run found all five, ranked, with who never finds out and the loud fix. Plain Claude found
