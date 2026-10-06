@@ -115,10 +115,12 @@ behaviour cases also run without the skill, so the difference is what the skill 
   the handled code alone and its runs cost about 40% less. Telling handled code from real failures
   is the next thing to improve.
 
-Run a skill's suite from its folder (cases that set up files need `--scaffold`):
+Run a skill's suite from its folder (cases that set up files need `--scaffold`), then
+`node scripts/gen-tests.mjs` to update [`tests.json`](./tests.json), the summary my portfolio reads:
 
 ```bash
 cd silent-failure-sweep && claude plugin eval . --scaffold
+cd .. && node scripts/gen-tests.mjs
 ```
 
 ## License
