@@ -64,7 +64,7 @@ Lets an agent confirm a Flutter app's UI on the Android emulator by driving it w
 
 ### [lighthouse-audit](./lighthouse-audit) · Web Perf
 
-Runs Lighthouse against a production build, takes the median of several mobile runs (single runs are noisy), and turns the result into an actionable punch list (category scores, Core Web Vitals, the exact failing audits and the LCP phase breakdown), with before/after support.
+Runs Lighthouse against a production build, takes the median of several mobile runs (single runs are noisy), and turns the result into an actionable punch list (category scores, Core Web Vitals, the exact failing audits and the LCP phase breakdown), with before/after support. It also checks the simulated numbers against a real throttled load and flags scripts the hosting injects, so a fix targets something real.
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="./lighthouse-audit/evidence-dark.png"><img src="./lighthouse-audit/evidence.png" alt="Lighthouse on matthewkay.dev, mobile, median of three runs (77, 78, 80), 6 Oct 2026: Performance 78, Accessibility, Best practices and SEO 100. Fix first: LCP 5.1 s, mostly the hero name waiting on its fade-in; defer 21 offscreen images (about 528 KiB); preconnect to the live skills data (about 330 ms)." width="404"></picture>
 
