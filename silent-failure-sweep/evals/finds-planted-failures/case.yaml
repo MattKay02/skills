@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: finds-planted-failures
+description: A small order service with one planted silent failure per pattern; the sweep should find each one. Run with --scaffold.
+tags: [behaviour]
+context:
+  scaffold_script: scaffold.sh

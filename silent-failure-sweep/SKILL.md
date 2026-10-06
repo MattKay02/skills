@@ -174,6 +174,14 @@ Rank by consequence, not by count: *would someone act on a wrong answer?*
 (compliance, safety, money) beats *would someone be confused?* beats *would a
 developer eventually notice?*
 
+Only silent failures go in the ranked list. Loud problems you notice on the way
+(a crash, a thrown error, missing input validation, a race) are real but not this
+sweep's subject: give them one short "Also noticed" line after the list, so they
+don't push a quiet failure further down. And before ranking anything, check whether
+the code already makes it loud (a `stop_reason` check that throws, a `catch` that
+pages someone, a status with a retry and an escalation); if it does, it goes under
+"ruled out", not in the list.
+
 Then list, briefly, what you checked and ruled out, so the owner knows the
 coverage — and say plainly what you didn't look at.
 

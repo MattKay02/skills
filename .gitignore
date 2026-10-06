@@ -4,3 +4,6 @@ Thumbs.db
 .idea/
 .vscode/
 *.log
+
+# Eval run output (claude plugin eval)
+*/evals/results/
