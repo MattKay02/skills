@@ -40,6 +40,8 @@ Starts a Codemagic build from the terminal, polls it to completion, and reports 
 
 Drives the running app with Playwright through every surface and state of a feature (empty, mid-flow, success, collapsed/expanded), saving an ordered, numbered screenshot folder that reads like a story. Idempotent: it cleans up everything it creates, so re-running after fixes regenerates the same sequence for comparison.
 
+<picture><source media="(prefers-color-scheme: dark)" srcset="./ui-walk/evidence-dark.jpg"><img src="./ui-walk/evidence.jpg" alt="A real walk of the CV viewer on matthewkay.dev, 6 Oct 2026: six numbered screenshots (opened, scrolled to the end, dark theme, a phone opening the /#cv link first, the standalone page) and the one finding, a heavy focus ring on the phone close button." width="404"></picture>
+
 **Why:** I kept hand-writing the same walk script before every UI review: ordered captures of every state, then feed the folder to page-audit. Third time was the skill. · **Stack:** Claude Code, Playwright
 
 **Install:** `npx skills add MattKay02/skills --skill ui-walk` · Claude Code: `/plugin install ui-walk@mattkay02`
@@ -64,6 +66,8 @@ Lets an agent confirm a Flutter app's UI on the Android emulator by driving it w
 
 Runs Lighthouse against a production build, takes the median of several mobile runs (single runs are noisy), and turns the result into an actionable punch list (category scores, Core Web Vitals, the exact failing audits and the LCP phase breakdown), with before/after support.
 
+<picture><source media="(prefers-color-scheme: dark)" srcset="./lighthouse-audit/evidence-dark.png"><img src="./lighthouse-audit/evidence.png" alt="Lighthouse on matthewkay.dev, mobile, median of three runs (77, 78, 80), 6 Oct 2026: Performance 78, Accessibility, Best practices and SEO 100. Fix first: LCP 5.1 s, mostly the hero name waiting on its fade-in; defer 21 offscreen images (about 528 KiB); preconnect to the live skills data (about 330 ms)." width="404"></picture>
+
 **Why:** I kept hand-running the same spin-up-preview → run-Lighthouse → diff-before/after loop on every perf pass. This makes it one repeatable, median-stable step. · **Stack:** Claude Code, Lighthouse, Chrome
 
 **Install:** `npx skills add MattKay02/skills --skill lighthouse-audit` · Claude Code: `/plugin install lighthouse-audit@mattkay02`
@@ -79,6 +83,8 @@ Builds a pan-and-zoom board of every screen in an app: full-page captures laid o
 ### [silent-failure-sweep](./silent-failure-sweep) · Reliability
 
 Hunts a codebase for failures that happen without anyone being told: capped AI calls whose stop reason is never checked, errors turned into empty results, background jobs with no failure handler that leave records stuck mid-state, counts that report the same problem every run without escalating, and limits applied quietly. Produces a ranked punch list with file:line and the loud alternative, and proves the worst with a cheap live probe rather than asserting it.
+
+<picture><source media="(prefers-color-scheme: dark)" srcset="./silent-failure-sweep/evidence-dark.png"><img src="./silent-failure-sweep/evidence.png" alt="The sweep on a test service with five planted silent failures, all five found. Top three of eight ranked findings: allergens show as none when the database fails; orders can get stuck, run twice or crash the queue; Download all orders stops at 1,000." width="404"></picture>
 
 **Why:** In one day on a production app, the same shape turned up five times: a document pipeline that silently kept only the first 17 pages of a 40-page file, background jobs that hung forever and made the UI blame the wrong thing, a usage meter counting every document as one page, and a weekly check reporting the same three failures for two months without naming them. Each was honest in its logs and silent to the person who needed to know. · **Stack:** Claude Code, Static analysis, SQL
 

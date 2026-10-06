@@ -20,6 +20,12 @@ const { skills } = JSON.parse(readFileSync(join(ROOT, 'skills.json'), 'utf8'))
 const block = skills
   .map((s) => {
     const lines = [`### [${s.name}](./${s.name}) · ${s.label}`, s.description]
+    // Real output from a real run, in the reader's GitHub theme (light or dark).
+    if (s.evidence?.image) {
+      const alt = (s.evidence.caption ?? `${s.name} output`).replace(/"/g, '&quot;')
+      const dark = s.evidence.dark ? `<source media="(prefers-color-scheme: dark)" srcset="./${s.name}/${s.evidence.dark}">` : ''
+      lines.push(`<picture>${dark}<img src="./${s.name}/${s.evidence.image}" alt="${alt}" width="404"></picture>`)
+    }
     const meta = []
     if (s.why) meta.push(`**Why:** ${s.why}`)
     if (Array.isArray(s.stack) && s.stack.length) meta.push(`**Stack:** ${s.stack.join(', ')}`)

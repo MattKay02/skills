@@ -33,7 +33,12 @@
         "a feature",
         "every state, driven by Playwright",
         "numbered screenshots"
-      ]
+      ],
+      "evidence": {
+        "image": "evidence.jpg",
+        "dark": "evidence-dark.jpg",
+        "caption": "A real walk of the CV viewer on matthewkay.dev, 6 Oct 2026: six numbered screenshots (opened, scrolled to the end, dark theme, a phone opening the /#cv link first, the standalone page) and the one finding, a heavy focus ring on the phone close button."
+      }
     },
     {
       "name": "page-audit",
@@ -86,7 +91,12 @@
         "a production build",
         "three mobile runs, the median",
         "scores and a punch list"
-      ]
+      ],
+      "evidence": {
+        "image": "evidence.png",
+        "dark": "evidence-dark.png",
+        "caption": "Lighthouse on matthewkay.dev, mobile, median of three runs (77, 78, 80), 6 Oct 2026: Performance 78, Accessibility, Best practices and SEO 100. Fix first: LCP 5.1 s, mostly the hero name waiting on its fade-in; defer 21 offscreen images (about 528 KiB); preconnect to the live skills data (about 330 ms)."
+      }
     },
     {
       "name": "screen-board",
@@ -122,7 +132,12 @@
         "a codebase",
         "seven silent-failure patterns",
         "a ranked list with file:line"
-      ]
+      ],
+      "evidence": {
+        "image": "evidence.png",
+        "dark": "evidence-dark.png",
+        "caption": "The sweep on a test service with five planted silent failures, all five found. Top three of eight ranked findings: allergens show as none when the database fails; orders can get stuck, run twice or crash the queue; Download all orders stops at 1,000."
+      }
     },
     {
       "name": "motion-sketchbook",
