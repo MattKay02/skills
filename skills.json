@@ -80,7 +80,7 @@
       "label": "Web Perf",
       "step": "check",
       "summary": "Measures a production build on mobile and says what to fix first.",
-      "description": "Runs Lighthouse against a production build, takes the median of several mobile runs (single runs are noisy), and turns the result into an actionable punch list (category scores, Core Web Vitals, the exact failing audits and the LCP phase breakdown), with before/after support.",
+      "description": "Runs Lighthouse against a production build, takes the median of several mobile runs (single runs are noisy), and turns the result into an actionable punch list (category scores, Core Web Vitals, the exact failing audits and the LCP phase breakdown), with before/after support. It also checks the simulated numbers against a real throttled load and flags scripts the hosting injects, so a fix targets something real.",
       "why": "I kept hand-running the same spin-up-preview → run-Lighthouse → diff-before/after loop on every perf pass. This makes it one repeatable, median-stable step.",
       "stack": [
         "Claude Code",
