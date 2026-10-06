@@ -1,0 +1,50 @@
+{
+  "name": "mattkay02",
+  "owner": {
+    "name": "Matthew Kay",
+    "url": "https://github.com/MattKay02"
+  },
+  "description": "Claude Code skills I build for my own workflow: UI evidence and review, mobile QA and CI, web performance, reliability sweeps and motion design. Each skill installs on its own.",
+  "plugins": [
+    {
+      "name": "codemagic-build",
+      "source": "./codemagic-build",
+      "description": "Starts a Codemagic build from the terminal, polls it to completion, and reports the result with artifact download links, so \"ship a build and tell me when it lands\" doesn't mean sitting on a browser tab for twenty minutes."
+    },
+    {
+      "name": "ui-walk",
+      "source": "./ui-walk",
+      "description": "Drives the running app with Playwright through every surface and state of a feature (empty, mid-flow, success, collapsed/expanded), saving an ordered, numbered screenshot folder that reads like a story."
+    },
+    {
+      "name": "page-audit",
+      "source": "./page-audit",
+      "description": "Audits a UI surface across seven axes and returns a prioritized P1/P2/P3 punch list, verifying every finding against the actual code (file:line citations) before reporting it."
+    },
+    {
+      "name": "emulator-verify",
+      "source": "./emulator-verify",
+      "description": "Lets an agent confirm a Flutter app's UI on the Android emulator by driving it with adb input, capturing screenshots over adb, and reading them back with vision, so it checks its own work between turns instead of asking me to look."
+    },
+    {
+      "name": "lighthouse-audit",
+      "source": "./lighthouse-audit",
+      "description": "Runs Lighthouse against a production build, takes the median of several mobile runs (single runs are noisy), and turns the result into an actionable punch list (category scores, Core Web Vitals, the exact failing audits and the LCP phase breakdown), with before/after support."
+    },
+    {
+      "name": "screen-board",
+      "source": "./screen-board",
+      "description": "Builds a pan-and-zoom board of every screen in an app: full-page captures laid out in reading order, each paired with what that screen is FOR and what good looks like, published as one design canvas that updates in place."
+    },
+    {
+      "name": "silent-failure-sweep",
+      "source": "./silent-failure-sweep",
+      "description": "Hunts a codebase for failures that happen without anyone being told: capped AI calls whose stop reason is never checked, errors turned into empty results, background jobs with no failure handler that leave records stuck mid-state, counts that report the same problem every run without escalating, and limits applied quietly."
+    },
+    {
+      "name": "motion-sketchbook",
+      "source": "./motion-sketchbook",
+      "description": "Sketches a design as rendered films and stills before anything is built: several distinct options for a launch animation, store pictures or a run of social posts, drawn in Remotion from the product's real screens, type and marks, and shown side by side on one page to pick by watching."
+    }
+  ]
+}

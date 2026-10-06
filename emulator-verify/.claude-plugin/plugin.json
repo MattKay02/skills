@@ -1,0 +1,17 @@
+{
+  "name": "emulator-verify",
+  "description": "Lets an agent confirm a Flutter app's UI on the Android emulator by driving it with adb input, capturing screenshots over adb, and reading them back with vision, so it checks its own work between turns instead of asking me to look.",
+  "author": {
+    "name": "Matthew Kay",
+    "url": "https://github.com/MattKay02"
+  },
+  "homepage": "https://github.com/MattKay02/skills/tree/main/emulator-verify",
+  "repository": "https://github.com/MattKay02/skills",
+  "license": "MIT",
+  "keywords": [
+    "mobile-qa",
+    "claude-code",
+    "adb",
+    "flutter"
+  ]
+}

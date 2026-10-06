@@ -1,0 +1,40 @@
+name: Sync README and install manifests
+
+# Keeps the README's skill list and the install manifests (.claude-plugin/) in sync
+# with skills.json and each SKILL.md. Runs when any of those (or the generators)
+# change, regenerates, and commits the result. The commit only touches generated
+# files, which aren't in the paths filter, so it never retriggers itself.
+on:
+  push:
+    branches: [main]
+    paths:
+      - skills.json
+      - '*/SKILL.md'
+      - scripts/gen-readme.mjs
+      - scripts/gen-plugins.mjs
+      - .github/workflows/sync.yml
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/gen-readme.mjs
+      - run: node scripts/gen-plugins.mjs
+      - name: Commit if changed
+        run: |
+          git add README.md .claude-plugin '*/.claude-plugin'
+          if git diff --cached --quiet; then
+            echo "Already up to date."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git commit -m "docs: sync README and install manifests [skip ci]"
+            git push
+          fi

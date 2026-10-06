@@ -1,6 +1,6 @@
 ---
 name: emulator-verify
-description: Verify a running Android emulator's UI state by capturing screenshots via adb and reading them back as images, and optionally drive the app through a flow with adb input. Use any time you want to visually confirm an emulator render after a Flutter (or native Android) code change — checking a banner state, a chip color, a layout, an error overlay, or any "did this draw correctly?" question — instead of asking the user to look at their screen.
+description: Verify a running Android emulator's UI state by capturing screenshots via adb and reading them back as images, and optionally drive the app through a flow with adb input. Use any time you want to visually confirm an emulator render after a Flutter (or native Android) code change (checking a banner state, a chip color, a layout, an error overlay, or any "did this draw correctly?" question) instead of asking the user to look at their screen.
 ---
 
 # Verifying an Android emulator's UI

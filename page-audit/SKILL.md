@@ -1,6 +1,6 @@
 ---
 name: page-audit
-description: Audit a UI page or surface and return concrete prioritized findings. Use when the user asks to audit, review, critique, or "look at" a page or screen — usually with a screenshot, route, or component name. Does NOT redesign and does NOT fix code; produces a punch list.
+description: Audit a UI page or surface and return concrete prioritized findings. Use when the user asks to audit, review, critique, or "look at" a page or screen, usually with a screenshot, route, or component name. Does NOT redesign and does NOT fix code; produces a punch list.
 ---
 
 # Page audit

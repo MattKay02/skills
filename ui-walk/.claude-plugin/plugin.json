@@ -1,0 +1,16 @@
+{
+  "name": "ui-walk",
+  "description": "Drives the running app with Playwright through every surface and state of a feature (empty, mid-flow, success, collapsed/expanded), saving an ordered, numbered screenshot folder that reads like a story.",
+  "author": {
+    "name": "Matthew Kay",
+    "url": "https://github.com/MattKay02"
+  },
+  "homepage": "https://github.com/MattKay02/skills/tree/main/ui-walk",
+  "repository": "https://github.com/MattKay02/skills",
+  "license": "MIT",
+  "keywords": [
+    "ui-evidence",
+    "claude-code",
+    "playwright"
+  ]
+}

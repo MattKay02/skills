@@ -1,6 +1,6 @@
 ---
 name: codemagic-build
-description: Start a Codemagic CI build from the terminal, poll it to completion, and report the result with artifact download links. Use when asked to kick off a CI build, ship a TestFlight/Play build, check whether a build passed, cancel a running build, or fetch a build's artifacts. Reads the API token from the environment only — never from the repo. Builds cost money and may publish to a store, so it always confirms before starting one.
+description: Start a Codemagic CI build from the terminal, poll it to completion, and report the result with artifact download links. Use when asked to kick off a CI build, ship a TestFlight/Play build, check whether a build passed, cancel a running build, or fetch a build's artifacts. Reads the API token from the environment only, never from the repo. Builds cost money and may publish to a store, so it always confirms before starting one.
 ---
 
 # Codemagic build
