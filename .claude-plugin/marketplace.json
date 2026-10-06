@@ -32,6 +32,11 @@
       "description": "Runs Lighthouse against a production build, takes the median of several mobile runs (single runs are noisy), and turns the result into an actionable punch list (category scores, Core Web Vitals, the exact failing audits and the LCP phase breakdown), with before/after support."
     },
     {
+      "name": "phone-fit",
+      "source": "./phone-fit",
+      "description": "Steps through every state of a page or flow at the sizes phones actually give it (Safari's address bar takes part of the screen) and measures what desktop checks miss: a sheet or card that has to scroll, a Next or Submit button off screen, labels landing on other content, and a page that keeps writing to the DOM every frame, the usual reason iPhone Safari lags or reloads."
+    },
+    {
       "name": "screen-board",
       "source": "./screen-board",
       "description": "Builds a pan-and-zoom board of every screen in an app: full-page captures laid out in reading order, each paired with what that screen is FOR and what good looks like, published as one design canvas that updates in place."

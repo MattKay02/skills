@@ -99,6 +99,24 @@
       }
     },
     {
+      "name": "phone-fit",
+      "label": "Mobile Fit",
+      "step": "check",
+      "summary": "Checks every step at real iPhone sizes: nothing scrolls, Next stays on screen, the page rests.",
+      "description": "Steps through every state of a page or flow at the sizes phones actually give it (Safari's address bar takes part of the screen) and measures what desktop checks miss: a sheet or card that has to scroll, a Next or Submit button off screen, labels landing on other content, and a page that keeps writing to the DOM every frame, the usual reason iPhone Safari lags or reloads. Reports per size and per step, saves a screenshot strip of the worst cases, and re-measures after fixes.",
+      "why": "On 6 Oct 2026 my portfolio crash-looped in iPhone Safari and its guide card hid the Next button on an iPhone 13 Pro, while every desktop check passed. I ran the same phone measurements four times that day before turning them into a skill.",
+      "stack": [
+        "Claude Code",
+        "Playwright",
+        "WebKit"
+      ],
+      "flow": [
+        "a page or step-by-step flow",
+        "every step at real phone sizes, plus an idle check",
+        "what scrolls, hides, overlaps or never rests"
+      ]
+    },
+    {
       "name": "screen-board",
       "label": "Product Map",
       "step": "plan",

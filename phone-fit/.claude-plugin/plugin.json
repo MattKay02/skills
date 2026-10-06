@@ -1,0 +1,17 @@
+{
+  "name": "phone-fit",
+  "description": "Steps through every state of a page or flow at the sizes phones actually give it (Safari's address bar takes part of the screen) and measures what desktop checks miss: a sheet or card that has to scroll, a Next or Submit button off screen, labels landing on other content, and a page that keeps writing to the DOM every frame, the usual reason iPhone Safari lags or reloads.",
+  "author": {
+    "name": "Matthew Kay",
+    "url": "https://github.com/MattKay02"
+  },
+  "homepage": "https://github.com/MattKay02/skills/tree/main/phone-fit",
+  "repository": "https://github.com/MattKay02/skills",
+  "license": "MIT",
+  "keywords": [
+    "mobile-fit",
+    "claude-code",
+    "playwright",
+    "webkit"
+  ]
+}
