@@ -87,16 +87,16 @@ export async function helpReply(question: string): Promise<string> {
 TS_EOF
 cat > service/search.ts <<'TS_EOF'
 import { db } from './db'
-import { alert } from './alerts'
+import { alertOnce } from './alerts'
 
 // Product suggestions under the search box. Optional: the page works without them,
-// so a failure shows no suggestions, but on-call is paged so it gets fixed.
+// so a failure shows no suggestions, and on-call is paged (at most once an hour).
 export async function suggestions(term: string): Promise<string[]> {
   try {
     const rows = await db.query('select name from products where name ilike $1 limit 5', [`${term}%`])
     return rows.map((r: { name: string }) => r.name)
   } catch (err) {
-    await alert('search_suggestions_failed', { term, error: String(err) })
+    await alertOnce('search_suggestions_failed', { error: String(err) })
     return []
   }
 }
@@ -106,7 +106,8 @@ import { db } from './db'
 import { alert } from './alerts'
 import { sendReminderEmail } from './email'
 
-// Sends one reminder; a failed send is marked and retried, and escalates after 3 tries.
+// Sends one reminder. A failed send is marked 'failed' with an attempt count, pages
+// on-call after the third failure, and rethrows so the caller's log records it too.
 export async function sendReminder(id: string) {
   await db.query("update reminders set status = 'sending' where id = $1", [id])
   try {
@@ -116,6 +117,21 @@ export async function sendReminder(id: string) {
     const [row] = await db.query(
       "update reminders set status = 'failed', attempts = attempts + 1 where id = $1 returning attempts", [id])
     if (row.attempts >= 3) await alert('reminder_failed_3_times', { id, error: String(err) })
+    throw err
+  }
+}
+
+// Every 10 minutes: retries reminders that have failed fewer than 3 times, and any
+// stuck in 'sending' for over 10 minutes (a crash mid-send).
+export async function retryReminders() {
+  const rows = await db.query(
+    "select id from reminders where (status = 'failed' and attempts < 3) or (status = 'sending' and updated_at < now() - interval '10 minutes')")
+  for (const row of rows) {
+    try {
+      await sendReminder(row.id)
+    } catch (err) {
+      console.error('reminder retry failed', row.id, err) // already marked failed; pages after 3 tries
+    }
   }
 }
 TS_EOF
@@ -161,12 +177,25 @@ export const sendReceipt = (orderId: string) => post('receipts', { orderId })
 export const sendReminderEmail = (id: string) => post('reminders', { id })
 TS_EOF
 cat > service/alerts.ts <<'TS_EOF'
-// Pages on-call (alert) or posts to the team's channel (postToTeamChannel).
-export async function alert(name: string, detail: Record<string, unknown>) {
-  await fetch('https://alerts.example.com/page', { method: 'POST', body: JSON.stringify({ name, detail }) })
+// Pages on-call (alert, alertOnce) or posts to the team's channel (postToTeamChannel).
+// A failed page or post throws, so a broken alerting setup is never silent.
+async function send(url: string, body: unknown) {
+  const res = await fetch(url, { method: 'POST', body: JSON.stringify(body) })
+  if (!res.ok) throw new Error(`Alert delivery failed: ${res.status} ${url}`)
 }
 
-export async function postToTeamChannel(text: string) {
-  await fetch('https://chat.example.com/hooks/team', { method: 'POST', body: JSON.stringify({ text }) })
+export const alert = (name: string, detail: Record<string, unknown>) =>
+  send('https://alerts.example.com/page', { name, detail })
+
+// At most one page per name per hour, so an outage doesn't page on-call per request.
+const lastPaged = new Map<string, number>()
+export async function alertOnce(name: string, detail: Record<string, unknown>) {
+  const now = Date.now()
+  if (now - (lastPaged.get(name) ?? 0) < 60 * 60 * 1000) return
+  lastPaged.set(name, now)
+  await alert(name, detail)
 }
+
+export const postToTeamChannel = (text: string) =>
+  send('https://chat.example.com/hooks/team', { text })
 TS_EOF

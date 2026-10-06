@@ -100,6 +100,27 @@ Sketches a design as rendered films and stills before anything is built: several
 Once installed, ask for the capability in plain words ("audit this page") and the agent picks
 the skill up, or run it as a slash command.
 
+## How they're tested
+
+Each skill has an `evals/` folder for Claude Code's built-in evals (`claude plugin eval`). A case
+gives a fresh, empty Claude session a realistic request, then checks the result automatically;
+behaviour cases also run without the skill, so the difference is what the skill adds.
+
+- **Triggering** (every skill): one plain request that should load the skill, and one near miss
+  that shouldn't. All 16 cases passed 3 runs out of 3 (6 October 2026).
+- **Behaviour** (`silent-failure-sweep`): a small order service with five planted silent failures,
+  three look-alikes that are handled properly, and ordinary code around them. With the skill,
+  every run found all five, ranked, with who never finds out and the loud fix. Plain Claude found
+  them too on this model (score 0.92 with the skill, 0.88 without); the skill was better at leaving
+  the handled code alone and its runs cost about 40% less. Telling handled code from real failures
+  is the next thing to improve.
+
+Run a skill's suite from its folder (cases that set up files need `--scaffold`):
+
+```bash
+cd silent-failure-sweep && claude plugin eval . --scaffold
+```
+
 ## License
 
 MIT, see [LICENSE](./LICENSE). Use them, fork them, adapt them.

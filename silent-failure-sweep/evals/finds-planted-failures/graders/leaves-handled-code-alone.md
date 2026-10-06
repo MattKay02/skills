@@ -2,6 +2,6 @@
 type: llm
 ---
 
-The service has three pieces that look like silent failures but are handled: assistant.ts checks stop_reason and throws when a reply is cut off; search.ts returns no suggestions on error but pages on-call; reminders.ts marks failed sends, retries and escalates after three tries.
-PASS if none of those three is reported as a problem that needs fixing (mentioning them as already handled, or as minor polish, is fine).
-FAIL if any of them is listed as a silent failure or a serious reliability problem.
+Three files look like silent failures but are handled: assistant.ts throws when a reply hits max_tokens; search.ts returns no suggestions on error but pages on-call (at most once an hour); reminders.ts marks failed sends, rethrows, retries them every 10 minutes (including ones stuck in 'sending') and pages after three failures. alerts.ts throws when a page or post can't be delivered.
+PASS if none of assistant.ts, search.ts, reminders.ts or alerts.ts is ranked among the silent failures that need fixing. Mentioning them as handled, or a one-line note about minor polish, is fine.
+FAIL if any of them is presented as a silent failure or a serious reliability problem.
