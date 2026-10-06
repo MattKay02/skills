@@ -120,12 +120,54 @@ const t=(el.details.items||[]).find(i=>i.type==='table');
   floor (the bundle must parse before anything paints) — say so honestly; only
   SSR/prerendering moves it much further.
 
-### 6. Before / after
+### 6. Check the numbers are real before acting on them
+
+Simulated throttling *estimates* mobile timings from one unthrottled load, and
+it can be badly wrong. Two checks catch most of it.
+
+**a. Cross-check the simulation against a real throttled load.** Signs the
+simulation is off: the observed first paint lands long after the observed load
+event, or the LCP element is server-rendered text yet shows seconds of Render
+Delay.
+
+```bash
+node -e "const m=require('./lh.json').audits.metrics.details.items[0];
+['observedFirstContentfulPaint','observedLargestContentfulPaint','observedLoad','largestContentfulPaint']
+  .forEach(k=>console.log(k.padEnd(32),Math.round(m[k])+'ms'));"
+```
+
+If so, re-run 2–3 times with `--throttling-method=devtools` in place of
+`simulate`. That throttling is applied for real (CPU slowed, slow 4G), so its
+LCP and TBT are measured, not estimated. Also time the same page in an ordinary
+browser with the same phone emulation (a `PerformanceObserver` on `paint` and
+`largest-contentful-paint`). When the three disagree, report the measured
+numbers and say why the simulated ones are off. Don't chase an LCP that only
+exists in the estimate.
+
+**b. Look for scripts the hosting adds.** A CDN or proxy can inject scripts
+that are nowhere in the codebase, so audit the **deployed URL** too, not only
+localhost. Cloudflare's proxy, for example, adds
+`/cdn-cgi/challenge-platform/.../jsd/main.js` (bot detection). It shows up as a
+top entry in `bootup-time` and `long-tasks` and as a best-practices
+`deprecations` failure, on every page.
+
+```bash
+curl -sI https://<site>/ | grep -iE "^(server|cf-ray|via|x-cache)"
+node -e "const a=require('./lh.json').audits;
+(a['bootup-time'].details.items||[]).slice(0,8).forEach(i=>console.log(Math.round(i.scripting)+'ms',i.url));"
+```
+
+The fix for those is in the host's settings (turn the feature off, or take the
+proxy out of the path), not in the code. Also check embedded iframes: one on a
+subdomain of the same site shares the page's main thread, while one on another
+domain usually doesn't.
+
+### 7. Before / after
 
 Capture the baseline (steps 1–5) BEFORE any change → `lh-before.json`. Make the
 changes, rebuild, re-serve, re-run → `lh-after.json`. Report a before→after table.
 
-### 7. Clean up
+### 8. Clean up
 
 Delete the temp `lh-*.json` files and stop the background server when done.
 
@@ -140,6 +182,9 @@ Delete the temp `lh-*.json` files and stop the background server when done.
 - **A11y:** colour-contrast (WCAG AA = 4.5:1 body, 3:1 large text), image alt,
   control names matching visible text, target-size ≥24px.
 - **SEO:** `<meta name="description">`, valid `robots.txt`, a title, crawlable links.
+- **Text that fades in above the fold:** an LCP element animated from
+  `opacity: 0` can't count as painted until the JavaScript runs. Animate
+  position (`transform`) instead of visibility for anything on screen at load.
 - Beware **code-splitting on throttled mobile** — the dynamic-import waterfall can
   *regress* LCP vs. a single bundle. Measure it; don't assume it helps.
 
@@ -150,9 +195,13 @@ Delete the temp `lh-*.json` files and stop the background server when done.
 - A grouped punch list of the failing audits with the concrete fix for each.
 - If a target is missed, say so plainly and explain what's actually capping it
   (e.g. CSR first-paint floor) rather than padding the number.
+- Where the simulated and measured (devtools) numbers disagree, show both and
+  say which to believe.
 
 ## What NOT to do
 
 - Don't audit the dev server or report a single noisy run.
 - Don't claim a fix worked without re-running and showing the new number.
 - Don't recommend a fix you didn't see in the failing-audit list.
+- Don't blame code for a script the hosting injects, or fix an LCP that only the
+  simulation shows.
