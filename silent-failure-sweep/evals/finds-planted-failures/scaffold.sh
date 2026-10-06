@@ -187,13 +187,20 @@ async function send(url: string, body: unknown) {
 export const alert = (name: string, detail: Record<string, unknown>) =>
   send('https://alerts.example.com/page', { name, detail })
 
-// At most one page per name per hour, so an outage doesn't page on-call per request.
+// At most one page per name per hour (per process), so an outage doesn't page on-call per request.
+// The slot is claimed before sending so simultaneous failures page once, and released if the page
+// fails, so the next failure tries again instead of being skipped for an hour.
 const lastPaged = new Map<string, number>()
 export async function alertOnce(name: string, detail: Record<string, unknown>) {
   const now = Date.now()
   if (now - (lastPaged.get(name) ?? 0) < 60 * 60 * 1000) return
   lastPaged.set(name, now)
-  await alert(name, detail)
+  try {
+    await alert(name, detail)
+  } catch (err) {
+    lastPaged.delete(name)
+    throw err
+  }
 }
 
 export const postToTeamChannel = (text: string) =>
