@@ -82,9 +82,9 @@ Steps through every state of a page or flow at the sizes phones actually give it
 
 ### [screen-board](./screen-board) · Product Map
 
-Builds a pan-and-zoom board of every screen in an app: full-page captures laid out in reading order, each paired with what that screen is FOR and what good looks like, published as one design canvas that updates in place. Records the commit each screen was captured at, so it can tell you which descriptions have gone out of date rather than just re-taking the pictures.
+Builds a board of every screen and state in an app (errors, empty, offline, dialogs and sheets, not just routes) as one page read top to bottom: a pinned code per screen, what each is FOR and what good looks like, a large view with previous and next, two tables, and what isn't on it and why. Records the commit each screen was captured at, so it can tell you which descriptions have gone out of date rather than just re-taking the pictures. For Flutter apps it draws the real widget tree in a test, as a phone, with no device.
 
-**Why:** I kept rebuilding the same board and it kept going quietly wrong: two frames were screenshots of a 404 for four days, and a panel described a feature three tools out of date. The screenshots were never the problem; the writing beside them was. · **Stack:** Claude Code, Playwright, Claude Design
+**Why:** I kept rebuilding the same board and it kept going quietly wrong: two frames were screenshots of a 404 for four days, and a panel described a feature three tools out of date. The screenshots were never the problem; the writing beside them was. The canvas version was hard to get around, so it became a page; drawing every state instead of photographing the happy path found four real bugs in an afternoon. · **Stack:** Claude Code, Playwright, Flutter
 
 **Install:** `npx skills add MattKay02/skills --skill screen-board` · Claude Code: `/plugin install screen-board@mattkay02`
 

@@ -1,6 +1,6 @@
 {
   "name": "screen-board",
-  "description": "Builds a pan-and-zoom board of every screen in an app: full-page captures laid out in reading order, each paired with what that screen is FOR and what good looks like, published as one design canvas that updates in place.",
+  "description": "Builds a board of every screen and state in an app (errors, empty, offline, dialogs and sheets, not just routes) as one page read top to bottom: a pinned code per screen, what each is FOR and what good looks like, a large view with previous and next, two tables, and what isn't on it and why.",
   "author": {
     "name": "Matthew Kay",
     "url": "https://github.com/MattKay02"
@@ -12,6 +12,6 @@
     "product-map",
     "claude-code",
     "playwright",
-    "claude-design"
+    "flutter"
   ]
 }
