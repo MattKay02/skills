@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: reads-only-the-small-copy
+description: A full-size 1080x2400 emulator screenshot is already on disk; the agent should shrink it, Read only the small copy, and still report the banner. Run with --scaffold --allow-tools Bash.
+tags: [behaviour]
+context:
+  scaffold_script: scaffold.sh
