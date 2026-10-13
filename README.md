@@ -56,7 +56,7 @@ Audits a UI surface across seven axes and returns a prioritized P1/P2/P3 punch l
 
 ### [emulator-verify](./emulator-verify) · Mobile QA
 
-Lets an agent confirm a Flutter app's UI on the Android emulator by driving it with adb input, capturing screenshots over adb, and reading them back with vision, so it checks its own work between turns instead of asking me to look. Shell-aware: the byte-safe screencap command differs between PowerShell and bash, and getting it wrong yields a corrupt PNG that looks fine on disk.
+Lets an agent confirm a Flutter app's UI on the Android emulator by driving it with adb input, capturing screenshots over adb, and reading them back with vision, so it checks its own work between turns instead of asking me to look. Shell-aware: the byte-safe screencap command differs between PowerShell and bash, and getting it wrong yields a corrupt PNG that looks fine on disk. It reads only a downscaled copy of each capture, and can shoot a before/after set of every screen by deep link for a design pass.
 
 **Why:** Closing the loop on mobile UI changes without a human in the middle every time. · **Stack:** Claude Code, adb, Flutter
 
