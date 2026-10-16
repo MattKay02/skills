@@ -54,7 +54,7 @@ class StoreError(Exception):
 
 def connect_doc() -> str:
     """Where the key set-up is explained, for error messages."""
-    return f'references/connect.md in the store-release skill ({CONNECT_DOC})'
+    return f'references/connect.md in the mobile-store-release skill ({CONNECT_DOC})'
 
 
 def check_lengths(fields: dict, limits: dict[str, int], where: str) -> None:
@@ -419,7 +419,7 @@ def call(
     return json.loads(raw)
 
 
-USER_AGENT = 'store-release-preflight/1.0 (+https://github.com/MattKay02/skills)'
+USER_AGENT = 'mobile-store-release-preflight/1.0 (+https://github.com/MattKay02/skills)'
 
 
 def fetch_status(url: str, timeout: float = 20) -> tuple[int | None, str]:

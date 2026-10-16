@@ -1,5 +1,5 @@
 ---
-name: store-release
+name: mobile-store-release
 description: Take an iOS or Android app through App Store Connect and Google Play from the terminal - connect a project with its own dedicated API keys, check and upload store screenshots, listing text and release notes, run a read-only pre-flight for what App Review or Play would reject, submit or promote a build that is already on TestFlight or a Play testing track, release a held version, watch review status, and work a rejection through to resubmission. Use when the user wants to submit, resubmit, release or promote an app build; asks whether it is ready for the App Store or Play, or where a review stands; pastes an App Review rejection, an "Unresolved Issues" message or a Play policy email; wants store screenshots, listing copy, What's New or TestFlight testers updated; or needs store API keys for a new app. Not for building or uploading the binary itself (that is CI), designing or drawing the screenshots, or writing app code.
 ---
 

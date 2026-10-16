@@ -3,7 +3,7 @@ the pictures, preflight and doctor, and that nothing reaches a store without
 --yes. Every test builds a temporary project with its own .store-release.json,
 and keeps any key files in a separate temporary folder outside it.
 
-    python -m unittest store-release/scripts/test_store.py     (from the repo root)
+    python -m unittest mobile-store-release/scripts/test_store.py     (from the repo root)
 """
 
 from __future__ import annotations

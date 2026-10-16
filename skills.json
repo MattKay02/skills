@@ -176,7 +176,7 @@
       ]
     },
     {
-      "name": "store-release",
+      "name": "mobile-store-release",
       "label": "Store Release",
       "step": "ship",
       "summary": "Takes an app through the App Store and Google Play from the terminal, and checks what review would reject first.",
