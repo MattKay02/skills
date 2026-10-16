@@ -84,14 +84,21 @@ in a command you print.
    the failing step and what it said — a bare "build failed" makes the user go
    to the browser you were meant to save them.
 
-   **There is no log endpoint.** `/builds/<id>/log`, `/actions/<id>/log` and
-   the plural forms all 404; logs live in the web UI only. What you do have is
-   `build.message`, which names the failing step and its exit status verbatim
-   ("Step 5 script `Generate config/app_config.json from secure vars` exited
-   with status code 1"), and `buildActions[]`, which shows every step's status
-   so the last `success` before the first `failed` locates it. Read the
-   failing script out of the repo's `codemagic.yaml` to explain *why* — that is
-   usually enough without the log, and it is what you can actually get.
+   **Each step's log is on the build object, not at a log endpoint.**
+   `/builds/<id>/log`, `/actions/<id>/log` and the plural forms all 404, but
+   every entry in `buildActions[]` carries a `logUrl`: `GET` it with the same
+   auth header and you get that step's log as text (with colour `<span>`
+   markup to strip). Find the step with `status: failed`, fetch its `logUrl`,
+   and read the last 30 to 40 lines: that is where the real error is. Also
+   useful: `build.message`, which names the failing step and its exit status
+   verbatim ("Step 5 script `Generate config/app_config.json from secure
+   vars` exited with status code 1"). Read the failing script out of the
+   repo's `codemagic.yaml` to explain *why*.
+
+   Verified 2026-10-16: a build whose every step passed except `Publishing`
+   had `build.message` saying only that publishing failed; the step's
+   `logUrl` gave Google Play's actual refusal ("This edit has expired, please
+   create a new Edit").
 
 ## API reference
 
@@ -139,6 +146,15 @@ Start-build body — `branch` *or* `tag`, not both:
   `Publishing`, which was `success`, because it had nothing to do and did it
   faultlessly. Never read that step as evidence a build shipped. The artifact
   list is the evidence.
+- **Don't read Google Play while a build is publishing to it.** Play changes
+  go through *edits*, and opening a new one expires the edit Codemagic is
+  uploading into. Anything that reads Play's tracks or listing (a store
+  status script, a pre-flight check) during the `publishing` step can fail a
+  build that had nothing wrong with it: every step green, `Publishing`
+  failed, and its log says "This edit has expired, please create a new
+  Edit". Watch the build through this API only, and read Play once the build
+  has finished. The bundle is fine; rebuild the same commit with nothing
+  touching Play.
 - **A build number normally comes from the CI counter**, not the project's
   version file. Don't bump a version to "make the build work" without
   checking — you will usually be wrong and the change will be committed.
