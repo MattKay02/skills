@@ -1,0 +1,19 @@
+{
+  "keys": {
+    "app_store_connect": "~/.store-keys/example/asc.json",
+    "google_play": "~/.store-keys/example/play-service-account.json"
+  },
+  "apps": {
+    "myapp": {
+      "name": "My App",
+      "ios": { "bundle_id": "com.example.myapp" },
+      "android": { "package": "com.example.myapp", "draft_until_published": false },
+      "listing": "store/listing.json",
+      "screenshots": { "ios": "store/screenshots/ios", "android": "store/screenshots/android" },
+      "play_feature_graphic": "store/play-feature-graphic.png",
+      "play_icon": "store/play-icon-512.png",
+      "creative": "store/creative",
+      "release_notes": "store/release-notes.txt"
+    }
+  }
+}

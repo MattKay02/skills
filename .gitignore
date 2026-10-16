@@ -7,3 +7,6 @@ Thumbs.db
 
 # Eval run output (claude plugin eval)
 */evals/results/
+
+# Python bytecode from running the bundled scripts or their tests
+__pycache__/
