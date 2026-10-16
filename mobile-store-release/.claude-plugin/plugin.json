@@ -1,0 +1,18 @@
+{
+  "name": "mobile-store-release",
+  "description": "Connects an app to App Store Connect and Google Play with its own dedicated API keys, checks the store pictures, uploads the listing, screenshots and creative assets, and runs a read-only pre-flight that lists what App Review or Play would block or reject before anything is submitted.",
+  "author": {
+    "name": "Matthew Kay",
+    "url": "https://github.com/MattKay02"
+  },
+  "homepage": "https://github.com/MattKay02/skills/tree/main/mobile-store-release",
+  "repository": "https://github.com/MattKay02/skills",
+  "license": "MIT",
+  "keywords": [
+    "store-release",
+    "claude-code",
+    "app-store-connect-api",
+    "google-play-developer-api",
+    "python"
+  ]
+}

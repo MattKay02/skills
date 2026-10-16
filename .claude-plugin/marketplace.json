@@ -50,6 +50,11 @@
       "name": "motion-sketchbook",
       "source": "./motion-sketchbook",
       "description": "Sketches a design as rendered films and stills before anything is built: several distinct options for a launch animation, store pictures or a run of social posts, drawn in Remotion from the product's real screens, type and marks, and shown side by side on one page to pick by watching."
+    },
+    {
+      "name": "mobile-store-release",
+      "source": "./mobile-store-release",
+      "description": "Connects an app to App Store Connect and Google Play with its own dedicated API keys, checks the store pictures, uploads the listing, screenshots and creative assets, and runs a read-only pre-flight that lists what App Review or Play would block or reject before anything is submitted."
     }
   ]
 }
