@@ -119,7 +119,8 @@ write release notes on their behalf without showing them.
 
 - `status <app>` for both stores. iOS moves `WAITING_FOR_REVIEW` →
   `IN_REVIEW` → `PENDING_DEVELOPER_RELEASE` or `READY_FOR_DISTRIBUTION`
-  (released). `REJECTED` means read rejections.md.
+  (released). `REJECTED` means read rejections.md; approved means read
+  approved.md, which also covers a held version's `release`.
 - **Play reads a release in review as `completed`.** `links` checks the public
   store page, which answers only once the app is live.
 - **Check at a sensible pace**, minutes to hours, not seconds. Reviews take

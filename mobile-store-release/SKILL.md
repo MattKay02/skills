@@ -1,13 +1,14 @@
 ---
 name: mobile-store-release
-description: Take an iOS or Android app through App Store Connect and Google Play from the terminal - connect a project with its own dedicated API keys, check and upload store screenshots, listing text and release notes, run a read-only pre-flight for what App Review or Play would reject, submit or promote a build that is already on TestFlight or a Play testing track, release a held version, watch review status, and work a rejection through to resubmission. Use when the user wants to submit, resubmit, release or promote an app build; asks whether it is ready for the App Store or Play, or where a review stands; pastes an App Review rejection, an "Unresolved Issues" message or a Play policy email; wants store screenshots, listing copy, What's New or TestFlight testers updated; or needs store API keys for a new app. Not for building or uploading the binary itself (that is CI), designing or drawing the screenshots, or writing app code.
+description: Take an iOS or Android app through App Store Connect and Google Play from the terminal - connect a project with its own dedicated API keys, check and upload store screenshots, listing text and release notes, run a read-only pre-flight for what App Review or Play would reject, submit or promote a build that is already on TestFlight or a Play testing track, release a held version, watch review status, work a rejection through to resubmission, and once a version is approved, prove it is public and update everywhere the project records where the app stands. Use when the user wants to submit, resubmit, release or promote an app build; asks whether it is ready for the App Store or Play, or where a review stands; pastes an App Review rejection, an "Unresolved Issues" message or a Play policy email; says an app was approved or accepted, is live, or pastes a "review of your submission is complete" email; wants store screenshots, listing copy, What's New or TestFlight testers updated; or needs store API keys for a new app. Not for building or uploading the binary itself (that is CI), designing or drawing the screenshots, or writing app code.
 ---
 
 # Store release
 
 You're being asked to take an app through the stores without living in two
 web consoles: connect it, get its pictures and listing up, prove it is ready,
-submit it, and answer App Review if it comes back. The point is that every
+submit it, answer App Review if it comes back, and once it is approved, make
+every place that says where the app stands say so. The point is that every
 lesson a rejection teaches is checked *before* the next submission, by a
 script, instead of being remembered by whoever happens to be releasing.
 
@@ -85,7 +86,9 @@ upload; fields starting with `_` are ignored, for comments.
 
 A project may also keep a **`.store-release.md`** beside it: the checks and
 history only that product has (a rejection it once had, a console step it
-needs, a picture rule its brand needs). **Read it before releasing**, and add
+needs, a picture rule its brand needs), and its **`## After approval`** list:
+every place that says where the app stands, to update when a version goes
+live. **Read it before releasing**, and add
 to it when a review teaches something; that file is how the next release
 starts where this one ended. If neither file exists, the project isn't
 connected yet: start at [references/connect.md](references/connect.md).
@@ -130,6 +133,7 @@ Read only the section for the step you're on; each is self-contained.
 | About to submit, or "is it ready?" | [references/preflight.md](references/preflight.md) |
 | Uploading, submitting, releasing, watching a review | [references/release.md](references/release.md) |
 | Rejected, "Unresolved Issues", a Play policy email, or resubmitting | [references/rejections.md](references/rejections.md) |
+| Approved, released, "review of your submission is complete", or "is it live?" | [references/approved.md](references/approved.md) |
 
 ## A release, end to end
 
@@ -149,6 +153,9 @@ Read only the section for the step you're on; each is self-contained.
 7. `submit`, on the user's yes to the printed plan.
 8. Report what went in and what to watch for. If a review comes back, go to
    [rejections.md](references/rejections.md).
+9. **When it is approved**, go to [approved.md](references/approved.md):
+   prove it is public, then work through the project's `## After approval`
+   list in `.store-release.md` (and write that list if it has none).
 
 ## Things that will catch you out
 
@@ -179,7 +186,8 @@ Read only the section for the step you're on; each is self-contained.
 
 ## Scope
 
-Connecting, checking, uploading, submitting, releasing and answering review.
+Connecting, checking, uploading, submitting, releasing, answering review, and
+recording an approval.
 **Not** building or uploading binaries, creating the app records, App
 Privacy, or a first subscription's attachment to a version: those are left to
 the developer and the consoles, listed in [connect.md](references/connect.md)
