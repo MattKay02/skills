@@ -108,7 +108,7 @@ Sketches a design as rendered films and stills before anything is built: several
 
 ### [mobile-store-release](./mobile-store-release) · Store Release
 
-Connects an app to App Store Connect and Google Play with its own dedicated API keys, checks the store pictures, uploads the listing, screenshots and creative assets, and runs a read-only pre-flight that lists what App Review or Play would block or reject before anything is submitted. Then it submits, watches the review, and works a rejection through to a resubmission in the same submission. Nothing changes without a plan shown and a yes, and a project's tooling can only touch the apps its own config names.
+Connects an app to App Store Connect and Google Play with its own dedicated API keys, checks the store pictures, uploads the listing, screenshots and creative assets, and runs a read-only pre-flight that lists what App Review or Play would block or reject before anything is submitted. Then it submits, watches the review, works a rejection through to a resubmission in the same submission, and once a version is approved, proves it is public and updates everywhere the project records where the app stands. Nothing changes without a plan shown and a yes, and a project's tooling can only touch the apps its own config names.
 
 **Why:** A release meant two web consoles and a head full of rules that each cost a rejection to learn: no "Free" in a screenshot, no name asked after Sign in with Apple, never cancel a stuck submission, never touch Play while CI is uploading. I was re-explaining them to every project. Now each lesson is a check that runs before the next submission. · **Stack:** Claude Code, App Store Connect API, Google Play Developer API, Python
 
