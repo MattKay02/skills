@@ -40,7 +40,7 @@ Starts a Codemagic build from the terminal, polls it to completion, and reports 
 
 Drives the running app with Playwright through every surface and state of a feature (empty, mid-flow, success, collapsed/expanded), saving an ordered, numbered screenshot folder that reads like a story. Idempotent: it cleans up everything it creates, so re-running after fixes regenerates the same sequence for comparison.
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="./ui-walk/evidence-dark.jpg"><img src="./ui-walk/evidence.jpg" alt="A real walk of the CV viewer on matthewkay.dev, 6 Oct 2026: six numbered screenshots (opened, scrolled to the end, dark theme, a phone opening the /#cv link first, the standalone page) and the one finding, a heavy focus ring on the phone close button." width="404"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="./ui-walk/evidence-dark.jpg"><img src="./ui-walk/evidence.jpg" alt="A real walk of the frunt case study on matthewkay.dev, 29 Oct 2026: six numbered screenshots (the board stop that opens it, the study over the board, its decisions, dark theme, a phone following the /#frunt link, the standalone page) and the one finding: a quote that opens with a closing mark." width="404"></picture>
 
 **Why:** I kept hand-writing the same walk script before every UI review: ordered captures of every state, then feed the folder to page-audit. Third time was the skill. · **Stack:** Claude Code, Playwright
 
@@ -76,6 +76,8 @@ Runs Lighthouse against a production build, takes the median of several mobile r
 
 Steps through every state of a page or flow at the sizes phones actually give it (Safari's address bar takes part of the screen) and measures what desktop checks miss: a sheet or card that has to scroll, a Next or Submit button off screen, labels landing on other content, and a page that keeps writing to the DOM every frame, the usual reason iPhone Safari lags or reloads. Reports per size and per step, saves a screenshot strip of the worst cases, and re-measures after fixes.
 
+<picture><source media="(prefers-color-scheme: dark)" srcset="./phone-fit/evidence-dark.png"><img src="./phone-fit/evidence.png" alt="phone-fit on matthewkay.dev, 29 Oct 2026: its 18 tour stops at four phone sizes. At 390 x 664 (an iPhone 13 Pro with Safari's bar showing) 16 of 18 fit before the fix and all 18 after; the two case-study cards had to scroll 5px. At 375 x 553 (iPhone SE) 4 stops still scroll. At 430 x 740 and 360 x 740 all fit. The page makes no changes at rest." width="404"></picture>
+
 **Why:** On 6 Oct 2026 my portfolio crash-looped in iPhone Safari and its guide card hid the Next button on an iPhone 13 Pro, while every desktop check passed. I ran the same phone measurements four times that day before turning them into a skill. · **Stack:** Claude Code, Playwright, WebKit
 
 **Install:** `npx skills add MattKay02/skills --skill phone-fit` · Claude Code: `/plugin install phone-fit@mattkay02`
@@ -110,6 +112,8 @@ Sketches a design as rendered films and stills before anything is built: several
 
 Connects an app to App Store Connect and Google Play with its own dedicated API keys, checks the store pictures, uploads the listing, screenshots and creative assets, and runs a read-only pre-flight that lists what App Review or Play would block or reject before anything is submitted. Then it submits, watches the review, works a rejection through to a resubmission in the same submission, and once a version is approved, proves it is public and updates everywhere the project records where the app stands. Nothing changes without a plan shown and a yes, and a project's tooling can only touch the apps its own config names.
 
+<picture><source media="(prefers-color-scheme: dark)" srcset="./mobile-store-release/evidence-dark.png"><img src="./mobile-store-release/evidence.png" alt="mobile-store-release's status and links for Run and Lift, read from the App Store's and Google Play's APIs on 29 Oct 2026: Run 1.0.1 on sale on the App Store and live on Google Play (1.0.1, build 31, production); Lift 2.0.0 on sale on the App Store and live on Google Play (build 46, production)." width="404"></picture>
+
 **Why:** A release meant two web consoles and a head full of rules that each cost a rejection to learn: no "Free" in a screenshot, no name asked after Sign in with Apple, never cancel a stuck submission, never touch Play while CI is uploading. I was re-explaining them to every project. Now each lesson is a check that runs before the next submission. · **Stack:** Claude Code, App Store Connect API, Google Play Developer API, Python
 
 **Install:** `npx skills add MattKay02/skills --skill mobile-store-release` · Claude Code: `/plugin install mobile-store-release@mattkay02`
@@ -118,6 +122,11 @@ Connects an app to App Store Connect and Google Play with its own dedicated API 
 
 > This list and the install manifests are generated from [`skills.json`](./skills.json)
 > and each `SKILL.md`. Don't edit them by hand: add a skill there and they sync themselves.
+>
+> My portfolio ([matthewkay.dev](https://matthewkay.dev), How I work) reads the same file live:
+> `step` (plan, decide, build, check or ship) puts a skill under that step; `featured` (1 to 3)
+> with `problem` (the problem that made it, one plain sentence) tells its story there; `evidence`
+> is real output from a real run, drawn at 404 × 196 in both looks.
 
 Once installed, ask for the capability in plain words ("audit this page") and the agent picks
 the skill up, or run it as a slash command.
