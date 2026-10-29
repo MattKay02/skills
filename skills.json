@@ -39,7 +39,7 @@
       "evidence": {
         "image": "evidence.jpg",
         "dark": "evidence-dark.jpg",
-        "caption": "A real walk of the CV viewer on matthewkay.dev, 6 Oct 2026: six numbered screenshots (opened, scrolled to the end, dark theme, a phone opening the /#cv link first, the standalone page) and the one finding, a heavy focus ring on the phone close button."
+        "caption": "A real walk of the frunt case study on matthewkay.dev, 29 Oct 2026: six numbered screenshots (the board stop that opens it, the study over the board, its decisions, dark theme, a phone following the /#frunt link, the standalone page) and the one finding: a quote that opens with a closing mark."
       }
     },
     {
@@ -109,6 +109,8 @@
       "step": "check",
       "hat": "personal",
       "summary": "Checks every step at real iPhone sizes: nothing scrolls, Next stays on screen, the page rests.",
+      "problem": "My portfolio crashed on iPhones and hid its Next button, while every desktop check passed.",
+      "featured": 1,
       "description": "Steps through every state of a page or flow at the sizes phones actually give it (Safari's address bar takes part of the screen) and measures what desktop checks miss: a sheet or card that has to scroll, a Next or Submit button off screen, labels landing on other content, and a page that keeps writing to the DOM every frame, the usual reason iPhone Safari lags or reloads. Reports per size and per step, saves a screenshot strip of the worst cases, and re-measures after fixes.",
       "why": "On 6 Oct 2026 my portfolio crash-looped in iPhone Safari and its guide card hid the Next button on an iPhone 13 Pro, while every desktop check passed. I ran the same phone measurements four times that day before turning them into a skill.",
       "stack": [
@@ -120,7 +122,12 @@
         "a page or step-by-step flow",
         "every step at real phone sizes, plus an idle check",
         "what scrolls, hides, overlaps or never rests"
-      ]
+      ],
+      "evidence": {
+        "image": "evidence.png",
+        "dark": "evidence-dark.png",
+        "caption": "phone-fit on matthewkay.dev, 29 Oct 2026: its 18 tour stops at four phone sizes. At 390 x 664 (an iPhone 13 Pro with Safari's bar showing) 16 of 18 fit before the fix and all 18 after; the two case-study cards had to scroll 5px. At 375 x 553 (iPhone SE) 4 stops still scroll. At 430 x 740 and 360 x 740 all fit. The page makes no changes at rest."
+      }
     },
     {
       "name": "screen-board",
@@ -147,6 +154,8 @@
       "step": "check",
       "hat": "studio",
       "summary": "Finds failures nobody is told about, ranked by who they hurt.",
+      "problem": "A live app kept only the first 17 pages of a 40-page document, and nobody was told.",
+      "featured": 2,
       "description": "Hunts a codebase for failures that happen without anyone being told: capped AI calls whose stop reason is never checked, errors turned into empty results, background jobs with no failure handler that leave records stuck mid-state, counts that report the same problem every run without escalating, and limits applied quietly. Produces a ranked punch list with file:line and the loud alternative, and proves the worst with a cheap live probe rather than asserting it.",
       "why": "In one day on a production app, the same shape turned up five times: a document pipeline that silently kept only the first 17 pages of a 40-page file, background jobs that hung forever and made the UI blame the wrong thing, a usage meter counting every document as one page, and a weekly check reporting the same three failures for two months without naming them. Each was honest in its logs and silent to the person who needed to know.",
       "stack": [
@@ -190,6 +199,8 @@
       "step": "ship",
       "hat": "studio",
       "summary": "Takes an app through the App Store and Google Play from the terminal, and checks what review would reject first.",
+      "problem": "Each store rule cost me a rejection to learn, and I kept re-explaining them to every project.",
+      "featured": 3,
       "description": "Connects an app to App Store Connect and Google Play with its own dedicated API keys, checks the store pictures, uploads the listing, screenshots and creative assets, and runs a read-only pre-flight that lists what App Review or Play would block or reject before anything is submitted. Then it submits, watches the review, works a rejection through to a resubmission in the same submission, and once a version is approved, proves it is public and updates everywhere the project records where the app stands. Nothing changes without a plan shown and a yes, and a project's tooling can only touch the apps its own config names.",
       "why": "A release meant two web consoles and a head full of rules that each cost a rejection to learn: no \"Free\" in a screenshot, no name asked after Sign in with Apple, never cancel a stuck submission, never touch Play while CI is uploading. I was re-explaining them to every project. Now each lesson is a check that runs before the next submission.",
       "stack": [
@@ -203,7 +214,12 @@
         "pictures checked, listing uploaded, pre-flight cleared",
         "submitted, and resubmitted if review says no",
         "approved: checked live, and recorded everywhere"
-      ]
+      ],
+      "evidence": {
+        "image": "evidence.png",
+        "dark": "evidence-dark.png",
+        "caption": "mobile-store-release's status and links for Run and Lift, read from the App Store's and Google Play's APIs on 29 Oct 2026: Run 1.0.1 on sale on the App Store and live on Google Play (1.0.1, build 31, production); Lift 2.0.0 on sale on the App Store and live on Google Play (build 46, production)."
+      }
     }
   ]
 }
